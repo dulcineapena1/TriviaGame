@@ -1,0 +1,34 @@
+
+.contenedor{
+    width: 90%;
+    height: 500px;
+    background-color: #ca8ea0;
+    margin: auto;
+    margin-top: 57px;
+
+}
+
+.titulo{
+    TEXT-ALIGN: center;
+    padding-top: 44px;
+}
+
+.info{
+    width: 100%;
+    background-color: rgb(129, 199, 152);
+    height: 400px;
+}
+
+.start{
+    width: 300px;
+    height: 52px;
+    margin: auto;
+    
+    display: block;
+}
+
+.foto{
+    background-image: url("https://i2.wp.com/files.polldaddy.com/ff7c3687da033b45427b4727b186cd49-598c5c6d3e6a4.jpg");
+    width: 50%;
+    height: 300px;
+}
