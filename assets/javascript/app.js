@@ -1,26 +1,22 @@
 $(document).ready(function (){
 
-    
-
-
-   
-
-
-
     var empezar = $("<button id='start' class ='start'>").val("eee ");
     empezar.text("CLICK TO START");
     $(".info").html(empezar);
 
     //el contador de tiempo empieza en este número
-    var tiempo = 10;
+    var tiempo = 25;
 
     //cantidad de respuestas, solo para usarlo en un loop como
     //tope
     var le = ["a","b", "c"];
 
     //array de preguntas
-    var todaspreguntas = ["Which of these statements is not true of human eyelashes?",
-    "Ayanna Williams has been growing her nails for more than 20 years. Their combined total length is closest to the height of:"
+    var todaspreguntas = ["2.-Which of these statements is not true of human eyelashes?",
+    "1.-Ayanna Williams has been growing her nails for more than 20 years. Their combined total length is closest to the height of:",
+    "3.-Mr Cherry holds a number of records, including one for the most apples bobbed in one minute. Which of the following kids TV shows does he star in?",
+    "4.-",
+    "5.-"
     
     ]
 
@@ -32,12 +28,30 @@ $(document).ready(function (){
             re2: "Eyelashes have tiny mites living in them",
             re3: "Eyelashes help you concentrate when you frown"
           }],
-          pre2: [
+        pre2: [
             {
               re1: "A four-storey town house (20 m; 66 ft)",
               re2: "A giraffe (5.8 m; 19 ft)",
               re3:"The Mount Rushmore noses (6 m; 20 ft)"
-            }]  
+            }], 
+        pre3: [
+            {
+            re1: "Blue Peter",
+            re2: "Officially Amazing",
+            re3: "iCarly"
+            }],
+        pre4: [
+            {
+            re1: "R PREG 4",
+            re2: "R PREG 4",
+            re3: "R PREG4"
+            }],
+        pre5: [
+            {
+            re1: "R PREG 5",
+            re2: "R PREG 5",
+            re3: "R PREG"
+            }]       
       };
 
 
@@ -65,10 +79,6 @@ $(document).ready(function (){
         $("#pregunta").text("QUESTIONS");
 
 
-        //muestro la primer pregunta 
-        $("#pregunta").text(todaspreguntas[1]);
-        
-
         //espacio donde pondré las respuestas
         //hice un loop para generar un id por cada respuesta y asi identificarlas
         for (var i = 0; i < le.length; i++){
@@ -79,10 +89,7 @@ $(document).ready(function (){
             $(respuestas).appendTo(".info");    
         }
 
-        //muestro el primer set de respuestas luego luego
-        $("#1").text(todasrespuestas.pre2[0].re1);
-        $("#2").text(todasrespuestas.pre2[0].re2);
-        $("#3").text(todasrespuestas.pre2[0].re3);
+ 
         
         runpreguntas();
         
@@ -92,7 +99,7 @@ $(document).ready(function (){
 
 
 
-    var scoregeneral= 0;
+   
     var socoregeneralb=0;
 
     //esta es la función para dar el juego por terminado si se acaba el tiempo de espera 
@@ -101,17 +108,7 @@ $(document).ready(function (){
         tiempo --;
         //en el id que hice arriba le voy a aparecer mi tiempo
         $("#primertexto").text(tiempo);
-        
-        
-        
 
-
-       
-
-
-
-        // dar por terminado el juego si no da clic en nada, 
-        //es decir, se acabó el tiempo
         if (tiempo == 2){
             $("#primertexto").text("GAME OVER YOU DIDN'T PLAY!");
             clearInterval(interValid);
@@ -120,19 +117,29 @@ $(document).ready(function (){
         
     };
     
+    var nuevoacierto = 0;
+   
 
-     //voy a ejecutar algo al hacer clic en la respuestas
-     //voy a avanzar una pregunta en el scoregeneral, 
-     //cada que responda,
-     //para así manipular en cual pregunta estoy
     function runpreguntas(){
         socoregeneralb++;
-        console.log("ya vas en la dos");
-        
+    //----INICIO PARTE DE PANTALLA DE PREGUNTAS
         //si ya hice la primer pregunta entonces el scoregeneralb sera 2 y asì sucesivo
+        if (socoregeneralb==1){
+                //Inicio pregunta 1
+                //muestro la primer pregunta 
+                $("#pregunta").text(todaspreguntas[1]);
+               //muestro el primer set de respuestas luego luego
+               $("#1").text(todasrespuestas.pre2[0].re1);
+               $("#2").text(todasrespuestas.pre2[0].re2);
+               $("#3").text(todasrespuestas.pre2[0].re3);
+
+               alseleccionar();
+        }
+
+        //Inicio pregunta 2
         if (socoregeneralb==2){
-            //aqui reinicio el reloj en 10
-            tiempo=10;
+            //aqui reinicio el reloj
+            tiempo=25;
             //quito la foto
             $(".foto").remove();
             //muestro la segunda pregunta 
@@ -141,56 +148,209 @@ $(document).ready(function (){
             $("#1").text(todasrespuestas.pre1[0].re1);
             $("#2").text(todasrespuestas.pre1[0].re2);
             $("#3").text(todasrespuestas.pre1[0].re3);
+
+             alseleccionar();
         }
 
+        //Inicio pregunta 3
+        if (socoregeneralb==4){
+            //aqui reinicio el reloj
+            tiempo=25;
+            //quito la foto
+            $(".foto").remove();
+            //muestro la segunda pregunta 
+            $("#pregunta").text(todaspreguntas[2]);
+            //muestro el segundo set de respuestas 
+            $("#1").text(todasrespuestas.pre3[0].re1);
+            $("#2").text(todasrespuestas.pre3[0].re2);
+            $("#3").text(todasrespuestas.pre3[0].re3);
 
-        $("li").on("click", function() {
-            scoregeneral ++;
-            console.log("este es el scoregeneral"+scoregeneral);
+             alseleccionar();   
+        }
+
+        //Inicio pregunta 4
+        if (socoregeneralb==5){
+            //aqui reinicio el reloj
+            tiempo=25;
+            //quito la foto
+            $(".foto").remove();
+            //muestro la segunda pregunta 
+            $("#pregunta").text(todaspreguntas[3]);
+            //muestro el segundo set de respuestas 
+            $("#1").text(todasrespuestas.pre4[0].re1);
+            $("#2").text(todasrespuestas.pre4[0].re2);
+            $("#3").text(todasrespuestas.pre4[0].re3);
+
+             alseleccionar();   
+        }
+
+        //Inicio pregunta 5
+        if (socoregeneralb==8){
+            //aqui reinicio el reloj
+            tiempo=25;
+            //quito la foto
+            $(".foto").remove();
+            //muestro la segunda pregunta 
+            $("#pregunta").text(todaspreguntas[4]);
+            //muestro el segundo set de respuestas 
+            $("#1").text(todasrespuestas.pre5[0].re1);
+            $("#2").text(todasrespuestas.pre5[0].re2);
+            $("#3").text(todasrespuestas.pre5[0].re3);
+
+            alseleccionar();   
+        }
+
+        //pantalla final
+        if (socoregeneralb==12){
+            $(".foto").remove();
+            //muestro la segunda pregunta 
+            $("#pregunta").text("GAME OVER");
+            //muestro el segundo set de respuestas 
+            $("#1").text("CORRECT ANSWERS" + "  " + nuevoacierto);
+            $("#2").text("INCORRECT ANSWERS"+ "  ");
+            $("#3").text("UNANSWERED"+ "  ");
+        }
+ 
+    }
+
+
+    var aciertos=0;
+        
+
+    function alseleccionar(){
+        $("li").on("click", function(event) {
             //aqui abajo obtengo el valor del id de lo clickeado
-            var seleccionjugador = $("ul").find(this).attr("id");
-            console.log(seleccionjugador);
-            //aqui estoy diciendo, el scoregeneral es la pregunta
-            //por lo que si en la primer pregunta, responde la primer respuesta,
-            //(la respuesta correcta es seleccionjugador)
-            if ((seleccionjugador == 1) && (scoregeneral == 1)){
-                console.log("aqui hay error");
-                $("#pregunta").html("CORRECT ANSWER!");
-                $("li").empty();
-                var fotografia = $("<div>").attr("class","foto");
-                $("#info").append(fotografia);
-                //después de tres segundos volver a correr esta funcion y asi
-                //pasar a la siguiente pregunta
-                setTimeout(runpreguntas,3000);
+           // var seleccionjugador = $("ul").find(this).attr("id");
+           var buscarelid=  event.target;
+           var idclik =$(buscarelid).attr("id");
+           console.log(idclik);
+           console.log(socoregeneralb);
+           preguntauno();
+           preguntados();
+           preguntatres();
+           preguntacuatro();
+           preguntacinco();
+           
+           setTimeout(runpreguntas,3000);
+           function preguntauno(){
+                if (socoregeneralb == 1 && idclik == 1  ){
+                    aciertos ++;
+                    $("#pregunta").html("CORRECT ANSWER!");
+                    $("li").empty();
+                    var fotografia = $("<div>").attr("class","foto");
+                    $("#info").append(fotografia);  
+                }
+                if (socoregeneralb == 1 && idclik != 1){
+                    $("#pregunta").text("NOPE!" + "The correct answer is"+ (todasrespuestas.pre2[0].re1));
+                    $("li").empty();
+                    var fotografia = $("<div>").attr("class","foto");
+                    $("#info").append(fotografia);
+                }
+                
             }
 
-            if  (scoregeneral==2) {
-                console.log("ya vas en la dos adentro");
+            function preguntados(){
+                if (socoregeneralb == 2 && idclik == 1  ){
+                    aciertos++;
+                    nuevoacierto= aciertos -1;
+                    
+                    $("#pregunta").html("CORRECT ANSWER!");
+                    $("li").empty();
+                    var fotografia = $("<div>").attr("class","foto2");
+                    $("#info").append(fotografia);  
+                }
+                if (socoregeneralb == 2 && idclik != 1){
+                    $("#pregunta").text("NOPE!" + "The correct answer is"+ (todasrespuestas.pre1[0].re1));
+                    $("li").empty();
+                    var fotografia = $("<div>").attr("class","foto2");
+                    $("#info").append(fotografia);
+                }
+               
+            }
+
+            
+            function preguntatres(){
+                console.log("este " +socoregeneralb);
+                if (socoregeneralb == 4 && idclik == 1  ){
+                    aciertos++;
+                    nuevoacierto= aciertos -3;
+                    console.log(nuevoacierto + "este es el acierto pregunta 3");
+                    $("#pregunta").html("CORRECT ANSWER!");
+                    $("li").empty();
+                    var fotografia = $("<div>").attr("class","foto3");
+                    $("#info").append(fotografia); 
+                    
+                }
+                if(socoregeneralb == 4 && idclik != 1){
+                    $("#pregunta").text("NOPE!" + "The correct answer is"+ (todasrespuestas.pre3[0].re1));
+                    $("li").empty();
+                    var fotografia = $("<div>").attr("class","foto3");
+                    $("#info").append(fotografia);
+                }
+                
+            }
+          
+
+            function preguntacuatro(){
+                if (socoregeneralb == 7 && idclik == 1  ){
+                    aciertos++;
+                    nuevoacierto= aciertos -6;
+                    console.log(nuevoacierto + "este es el acierto pregunta 4");
+                    $("#pregunta").html("CORRECT ANSWER!");
+                    $("li").empty();
+                    var fotografia = $("<div>").attr("class","foto4");
+                    $("#info").append(fotografia); 
+                    
+                }
+                if(socoregeneralb == 7 && idclik != 1){
+                    $("#pregunta").text("NOPE!" + "The correct answer is"+ (todasrespuestas.pre4[0].re1));
+                    $("li").empty();
+                    var fotografia = $("<div>").attr("class","foto4");
+                    $("#info").append(fotografia);
+                }
+                
+            }
+
+            function preguntacinco(){
+                if (socoregeneralb == 11 && idclik == 1  ){
+                    aciertos++;
+                    nuevoacierto= aciertos -10;
+                    console.log(nuevoacierto + "este es el acierto pregunta 5");
+                    $("#pregunta").html("CORRECT ANSWER!");
+                    $("li").empty();
+                    var fotografia = $("<div>").attr("class","foto5");
+                    $("#info").append(fotografia); 
+                    
+                }
+                if(socoregeneralb == 11 && idclik != 1){
+                    $("#pregunta").text("NOPE!" + "The correct answer is"+ (todasrespuestas.pre5[0].re1));
+                    $("li").empty();
+                    var fotografia = $("<div>").attr("class","foto5");
+                    $("#info").append(fotografia);
+                }
+
+            
                 
             }
             
             
-            // si no le atina a la respuesta (aqui deberìa de ser un else solamente pero no agarra:/)
-            if ((seleccionjugador!=1)&&(scoregeneral=1)) {
-                console.log("aqui es si no");
-                $("#pregunta").html("NOPE!");
-                $("li").empty();
-                var fotografia = $("<div>").attr("class","foto");
-                $("#info").append(fotografia);
-                setTimeout(runpreguntas,3000);
-            }
 
-    //aqui voy a hacer if's para pasar de pregunta en pregunta
-    //   if (scoregeneral==1){
-        //muestro la segunda pregunta
-     //     $("#primertexto").text("ya le picaste");
-     //   clearInterval(interValid);
-    //                }
+            
+        })
 
-    
-        });    
+
+       
+
     }
-        
+
+
+  
+
+
+
+
+
+
         
     
 
