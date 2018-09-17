@@ -1,8 +1,15 @@
+body{
+    background: url("https://www.xmple.com/wallpaper/beehive-honeycomb-black-hexagon-green-1920x1080-c2-000000-006400-l2-29-333-a-20-f-5.svg");
+}
+
+h1{
+    color: white;
+}
 
 .contenedor{
     width: 90%;
     height: 500px;
-    background-color: #ca8ea0;
+   
     margin: auto;
     margin-top: 57px;
 
@@ -16,25 +23,75 @@
 .info{
     width: 100%;
     background-color: rgb(129, 199, 152);
-    height: 400px;
+    height: 561px;
 }
 
 .start{
     width: 300px;
     height: 52px;
     margin: auto;
-    
     display: block;
+    background-color: red;
+    border-style: none;
+    border-radius: 43px;
+    color:white;
 }
 
 .foto{
     background-image: url("https://i2.wp.com/files.polldaddy.com/ff7c3687da033b45427b4727b186cd49-598c5c6d3e6a4.jpg");
-    width: 50%;
+    width: 40%;
+    
     height: 300px;
+    margin: auto;
+
 }
 
 .foto2{
     background-image: url("https://i1.wp.com/files.polldaddy.com/62b881e1b7d2a3502eda89accc31fe34-598c5a96cd1cb.jpg");
-    width: 50%;
     height: 300px;
+    width: 40%;
+    margin:auto;
+}
+
+.foto3{
+    background-image: url("https://i1.wp.com/files.polldaddy.com/47b6d02247d1db551049175cab2fd523-598c5eec74b98.jpg");
+    
+    height: 300px;
+    width: 40%;
+    margin:auto;
+}
+
+.foto4{
+    background-image: url("https://i2.wp.com/files.polldaddy.com/39abeb8b5d6d774abf035cdcc85feed8-598c63218ee22.jpg");
+   
+    height: 300px;
+    width: 40%;
+    margin:auto;
+}
+
+.foto5{
+    background-image: url("https://i2.wp.com/files.polldaddy.com/3853f893f358bb9bb7596a182361dd66-598c64b5005a7.jpg");
+   
+    height: 300px;
+    width: 40%;
+    margin:auto;
+}
+
+
+.lista {
+    list-style: none;
+    text-align: center;
+    background: aliceblue;
+    width: 40%;
+    margin: auto;
+    height: 42px;
+    padding-top: 26px;
+}
+
+.texto{
+    text-align: center;
+    font-weight: bold;
+    font-size: 36px;
+    padding-top: 30px;
+    color: white;
 }
